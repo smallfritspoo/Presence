@@ -4,6 +4,7 @@
 
 
 #include "Presence/Application.h"
+#include "Presence/Log.h"
 
 // ENTRYPOINT 
 #include "Presence/EntryPoint.h"

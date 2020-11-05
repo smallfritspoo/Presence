@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Events/Event.h"
 
 namespace Presence {
 	class PRESENCE_API Application
