@@ -1,3 +1,6 @@
 [submodule "Presence/vendor/spdlog"]
 	path = Presence/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Presence/vendor/GLFW"]
+	path = Presence/vendor/GLFW
+	url = https://github.com/smallfritspoo/glfw
