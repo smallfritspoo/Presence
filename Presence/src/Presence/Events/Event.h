@@ -2,6 +2,8 @@
 
 #include "Presence/Core.h"
 
+#include "prpch.h"
+
 namespace Presence {
 
 	enum class EventType {
@@ -28,8 +30,9 @@ namespace Presence {
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class PRESENCE_API Event {
-		friend class EventDispatcher;
+		// friend class EventDispatcher;
 	public:
+		bool Handled = false;
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -38,8 +41,8 @@ namespace Presence {
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_Handled = false;
+	//protected:
+	//	bool m_Handled = false;
 	};
 
 	class EventDispatcher {
@@ -54,7 +57,7 @@ namespace Presence {
 		template<typename T>
 		bool Dispatch(EventFn<T> func) {
 			if (m_Event.GetEventType() == T::GetStaticType()) {
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;

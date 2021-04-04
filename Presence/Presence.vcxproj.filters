@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Presence">
       <UniqueIdentifier>{1A2BA88B-06F8-0297-2F11-F13E1B3D3825}</UniqueIdentifier>
     </Filter>
@@ -9,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Presence.h" />
     <ClInclude Include="src\Presence\Application.h">
       <Filter>Presence</Filter>
@@ -31,13 +40,31 @@
     <ClInclude Include="src\Presence\Events\MouseEvent.h">
       <Filter>Presence\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Presence\Layer.h">
+      <Filter>Presence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Presence\LayerStack.h">
+      <Filter>Presence</Filter>
+    </ClInclude>
     <ClInclude Include="src\Presence\Log.h">
+      <Filter>Presence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Presence\Window.h">
       <Filter>Presence</Filter>
     </ClInclude>
     <ClInclude Include="src\prpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Presence\Application.cpp">
+      <Filter>Presence</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Presence\Layer.cpp">
+      <Filter>Presence</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Presence\LayerStack.cpp">
       <Filter>Presence</Filter>
     </ClCompile>
     <ClCompile Include="src\Presence\Log.cpp">

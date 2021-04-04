@@ -9,6 +9,12 @@ workspace "Presence"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "Presence/vendor/GLFW/include"
+
+include "Presence/vendor/GLFW"
+
 project "Presence"
 	location "Presence"
 	kind "SharedLib"
@@ -27,7 +33,14 @@ project "Presence"
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+	
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -46,14 +59,17 @@ project "Presence"
 
 	filter "configurations:Debug"
 		defines "PR_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PR_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PR_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -89,12 +105,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "PR_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PR_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PR_DIST"
+		buildoptions "/MD"
 		optimize "On"
